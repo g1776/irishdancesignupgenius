@@ -5,11 +5,18 @@ import selenium.webdriver.support.ui as ui
 from main import *
 
 
+
+
 st.title('Rochester Academy of Irish Dance')
 st.text('SignUpGenius Automation')
 
-email = st.text_input("Email", "")
-password = st.text_input("Password", "")
+try:
+    import credentials
+    email = st.text_input("Email", credentials.EMAIL)
+    password = st.text_input("Password", credentials.PASSWORD)
+except:
+    email = st.text_input("Email", "")
+    password = st.text_input("Password", "")
 
 go = st.button('Go!')
 
