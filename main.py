@@ -176,8 +176,10 @@ def run(email, password, bar, st, latest_iteration, chrome_version):
     # redefine globals
     chrome_options = Options()  
     chrome_options.add_argument("--headless")
-    global driver = webdriver.Chrome(executable_path=ChromeDriverManager(chrome_version).install(), chrome_options=chrome_options)
-    global wait = ui.WebDriverWait(driver, 10) # timeout after 10 seconds
+    global driver
+    global wait
+    driver = webdriver.Chrome(executable_path=ChromeDriverManager(chrome_version).install(), chrome_options=chrome_options)
+    wait = ui.WebDriverWait(driver, 10) # timeout after 10 seconds
     
     driver.get("https://www.signupgenius.com/register")
 
