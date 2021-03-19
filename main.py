@@ -8,6 +8,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from webdriver_manager.chrome import ChromeDriverManager
+
 import time
 from datetime import datetime
 import datetime as dt
@@ -161,7 +163,7 @@ def get_url():
 ##### DRIVER CODE ######
 chrome_options = Options()  
 chrome_options.add_argument("--headless")  
-driver = webdriver.Chrome('./chromedriver', chrome_options=chrome_options)
+driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), chrome_options=chrome_options)
 wait = ui.WebDriverWait(driver, 10) # timeout after 10 seconds
 
 def run(email, password, bar, st, latest_iteration):

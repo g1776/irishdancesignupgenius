@@ -1,8 +1,5 @@
 import streamlit as st
-from selenium import webdriver
-import selenium.webdriver.support.ui as ui
-
-from main import *
+from main import run
 
 
 
