@@ -166,92 +166,85 @@ def get_url():
 # globals initialization for import
 chrome_options = Options()  
 chrome_options.add_argument("--headless")
-driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), chrome_options=chrome_options)
+driver = webdriver.Chrome(executable_path='./chromedriver', chrome_options=chrome_options)
 wait = ui.WebDriverWait(driver, 10) # timeout after 10 seconds
 
 
 
-def run(email, password, bar, st, latest_iteration, chrome_version):
+def run(email, password, bar, st, latest_iteration):
 
-    # redefine globals
-    chrome_options = Options()  
-    chrome_options.add_argument("--headless")
-    global driver
-    global wait
-    driver = webdriver.Chrome(executable_path=ChromeDriverManager(chrome_version).install(), chrome_options=chrome_options)
-    wait = ui.WebDriverWait(driver, 10) # timeout after 10 seconds
     
     driver.get("https://www.signupgenius.com/register")
+    latest_iteration.text(driver.page_source)
+    # i = 0
 
-    i = 0
+    # # steps
+    # latest_iteration.text("Logging in")
+    # login(email, password)
+    # i += .09
+    # bar.progress(i)
 
-    # steps
-    latest_iteration.text("Logging in")
-    login(email, password)
-    i += .09
-    bar.progress(i)
+    # latest_iteration.text("Changing sort to desc")
+    # set_sort_order_desc()
+    # i += .09
+    # bar.progress(i)
 
-    latest_iteration.text("Changing sort to desc")
-    set_sort_order_desc()
-    i += .09
-    bar.progress(i)
+    # latest_iteration.text("Getting latest lesson")
+    # ll = get_latest_lesson()
+    # i += .09
+    # bar.progress(i)
 
-    latest_iteration.text("Getting latest lesson")
-    ll = get_latest_lesson()
-    i += .09
-    bar.progress(i)
+    # latest_iteration.text("Duplicating latest lesson")
+    # click_duplicate_btn(ll)
+    # i += .09
+    # bar.progress(i)
 
-    latest_iteration.text("Duplicating latest lesson")
-    click_duplicate_btn(ll)
-    i += .09
-    bar.progress(i)
+    # latest_iteration.text("Calculating new sign up title")
+    # sign_up_title = edit_title()
+    # i += .09
+    # bar.progress(i)
 
-    latest_iteration.text("Calculating new sign up title")
-    sign_up_title = edit_title()
-    i += .09
-    bar.progress(i)
-
-    latest_iteration.text("Creating copy")
-    create_copy()
-    i += .09
-    bar.progress(i)
+    # latest_iteration.text("Creating copy")
+    # create_copy()
+    # i += .09
+    # bar.progress(i)
     
-    driver.get("https://www.signupgenius.com/myaccount/")
-    driver.refresh()
+    # driver.get("https://www.signupgenius.com/myaccount/")
+    # driver.refresh()
 
-    latest_iteration.text("Changing sort to desc")
-    set_sort_order_desc()
-    i += .09
-    bar.progress(i)
+    # latest_iteration.text("Changing sort to desc")
+    # set_sort_order_desc()
+    # i += .09
+    # bar.progress(i)
 
-    latest_iteration.text("Going to unpublished sign up")
-    go_to_unpublished_sign_up(sign_up_title)
-    i += .09
-    bar.progress(i)
+    # latest_iteration.text("Going to unpublished sign up")
+    # go_to_unpublished_sign_up(sign_up_title)
+    # i += .09
+    # bar.progress(i)
     
-    slot_btn = wait.until(EC.element_to_be_clickable((By.XPATH, ".//button[ contains (text(), 'Slots' ) ]")))
-    slot_btn.click()
+    # slot_btn = wait.until(EC.element_to_be_clickable((By.XPATH, ".//button[ contains (text(), 'Slots' ) ]")))
+    # slot_btn.click()
 
-    dow = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    for day in dow:
-        latest_iteration.text(f"Editing day ({day})")
-        edit_slots(day)
-        i += .015
-        bar.progress(i)
+    # dow = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    # for day in dow:
+    #     latest_iteration.text(f"Editing day ({day})")
+    #     edit_slots(day)
+    #     i += .015
+    #     bar.progress(i)
 
-    latest_iteration.text("Publishing")
-    publish()
-    i += .09
-    bar.progress(i)
+    # latest_iteration.text("Publishing")
+    # publish()
+    # i += .09
+    # bar.progress(i)
 
-    latest_iteration.text("Getting sign up url")
-    sign_up_url = get_url()
-    i += .09
-    bar.progress(i)
+    # latest_iteration.text("Getting sign up url")
+    # sign_up_url = get_url()
+    # i += .09
+    # bar.progress(i)
 
-    latest_iteration.text("Done!")
+    # latest_iteration.text("Done!")
 
-    st.balloons()
-    st.success(f'----- {sign_up_title} created! ----')
+    # st.balloons()
+    # st.success(f'----- {sign_up_title} created! ----')
 
-    return sign_up_url
+    # return sign_up_url

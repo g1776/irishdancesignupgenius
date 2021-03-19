@@ -1,8 +1,6 @@
 import streamlit as st
 from main import run
 
-st.sidebar.text_input("Chrome Version", "89.0.4389")
-
 
 st.title('Rochester Academy of Irish Dance')
 st.text('SignUpGenius Automation')
@@ -24,5 +22,5 @@ if go:
         # progress bar
         latest_iteration = st.empty()
         bar = st.progress(0)
-        sign_up_url = run(email, password, bar, st, latest_iteration, chrome_version)
+        sign_up_url = run(email, password, bar, st, latest_iteration)
         url_placeholder.text(f"Your Sign Up URL: {sign_up_url}")
