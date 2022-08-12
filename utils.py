@@ -1,16 +1,18 @@
 import datetime
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 
-def login(email, password, driver):
+def login(email, password, driver: webdriver.Chrome):
     # email
-    e = driver.find_element_by_id("email")
+    e = driver.find_element(By.ID, "email")
     e.send_keys(email)
 
     # password
-    p = driver.find_element_by_id("pword")
+    p = driver.find_element(By.ID, "pword")
     p.send_keys(password)
     
-    l = driver.find_element_by_id("loginBtnId")
+    l = driver.find_element(By.ID, "loginBtnId")
     driver.execute_script("arguments[0].scrollIntoView();", l)
     l.click()
 
@@ -47,15 +49,4 @@ def get_new_date(old_date):
         output='{} {}-{} {}'.format(start_month_name, start_date, end_month_name, end_date)
 
     return output
-
-def exception_handler(starting_message, error_message):
-    def decorator(func):
-        def inner_function(*args, **kwargs):
-            try:
-                print(starting_message)
-                func(*args, **kwargs)
-            except TypeError:
-                print(error_message)
-        return inner_function
-    return decorator
 
